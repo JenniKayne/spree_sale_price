@@ -1,0 +1,9 @@
+<div class="form-group" data-hook="price">
+  <%= f.label :original_price, Spree.t(:original_price) %>
+  <%= f.text_field :original_price, value: number_to_currency(@variant.original_price, unit: ''), class: 'form-control' %>
+</div>
+
+<div class="form-group" data-hook="sale_price">
+  <%= f.label :sale_price, Spree.t(:sale_price) %>
+  <%= f.text_field :sale_price, value: number_to_currency(@variant.sale_price, unit: ''), class: 'form-control' %>
+</div>

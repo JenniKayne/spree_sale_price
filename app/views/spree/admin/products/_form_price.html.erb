@@ -1,0 +1,15 @@
+<div data-hook="admin_product_form_price">
+  <%= f.field_container :original_price, class: ['form-group'] do %>
+    <%= f.label :original_price, raw(Spree.t(:original_price) + content_tag(:span, ' *', class: "required")) %>
+    <%= f.text_field :original_price, value: number_to_currency(@product.original_price, unit: ''), class: 'form-control', disabled: (cannot? :update, @product.original_price) %>
+    <%= f.error_message_on :original_price %>
+  <% end %>
+</div>
+
+<div data-hook="admin_product_form_price">
+  <%= f.field_container :sale_price, class: ['form-group'] do %>
+    <%= f.label :sale_price, raw(Spree.t(:sale_price) + content_tag(:span, ' *', class: "required")) %>
+    <%= f.text_field :sale_price, value: number_to_currency(@product.sale_price, unit: ''), class: 'form-control', disabled: (cannot? :update, @product.sale_price) %>
+    <%= f.error_message_on :sale_price %>
+  <% end %>
+</div>
