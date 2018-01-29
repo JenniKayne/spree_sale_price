@@ -4,6 +4,7 @@ class AddOriginalPriceToLineItems < ActiveRecord::Migration[5.1]
     add_column :spree_line_items, :final_sale, :boolean, default: false
     Spree::LineItem.all.each do |line_item|
       line_item.update_column(:original_price, line_item.variant.original_price) if line_item.variant.present?
+      line_item.update_column(:final_sale, line_item.variant.final_sale) if line_item.variant.final_sale
     end
   end
 end
