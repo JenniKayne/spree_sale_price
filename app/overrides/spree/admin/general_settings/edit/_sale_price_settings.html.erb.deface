@@ -1,0 +1,22 @@
+<!-- insert_before '[data-hook=buttons]' -->
+<% binding.pry %>
+  <div class="row">
+    <div class="col-md-6">
+      <div class="panel panel-default">
+        <div class="panel-heading">
+          <h1 class="panel-title">
+            <%= Spree.t(:sale_price_settings)%>
+          </h1>
+        </div>
+
+        <div class="panel-body">
+          <div class="form-group">
+            <%= label_tag :enable_sale_prices do %>
+              <%= check_box_tag :enable_sale_prices, 1, Spree::Config.enable_sale_prices %>
+              <%= Spree.t(:enable_sale_prices) %>
+            <% end %>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>

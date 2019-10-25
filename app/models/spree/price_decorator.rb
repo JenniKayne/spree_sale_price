@@ -16,11 +16,13 @@ Spree::Price.class_eval do
 
   def disable_sale
     return nil unless active_sale.present?
+
     active_sale.disable
   end
 
   def enable_sale
     return nil unless next_active_sale.present?
+
     next_active_sale.enable
   end
 
@@ -36,6 +38,8 @@ Spree::Price.class_eval do
   alias_method :next_current_sale, :next_active_sale
 
   def on_sale?
+    return false unless Spree::Config.enable_sale_prices
+
     sale_prices.active.present? && first_sale(sale_prices.active).value != original_price
   end
 
@@ -49,11 +53,13 @@ Spree::Price.class_eval do
 
   def price
     return sale_price if on_sale?
+
     original_price
   end
 
   def put_on_sale(value, calculator_type = 'Spree::Calculator::DollarAmountSalePriceCalculator', start_at = Time.now, end_at = nil, enabled = true)
     return if value.blank? || variant.blank?
+
     new_sale(value, calculator_type, start_at, end_at, enabled).save
   end
   alias_method :create_sale, :put_on_sale
@@ -68,11 +74,13 @@ Spree::Price.class_eval do
 
   def start_sale(end_time = nil)
     return nil unless next_active_sale.present?
+
     next_active_sale.start(end_time)
   end
 
   def stop_sale
     return nil unless active_sale.present?
+
     active_sale.stop
   end
 
