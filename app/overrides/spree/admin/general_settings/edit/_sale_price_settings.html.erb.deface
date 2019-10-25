@@ -1,5 +1,4 @@
 <!-- insert_before '[data-hook=buttons]' -->
-<% binding.pry %>
   <div class="row">
     <div class="col-md-6">
       <div class="panel panel-default">
