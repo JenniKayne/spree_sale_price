@@ -11,6 +11,7 @@
         <div class="panel-body">
           <div class="form-group">
             <%= label_tag :enable_sale_prices do %>
+              <%= hidden_field_tag :enable_sale_prices, 0 %>
               <%= check_box_tag :enable_sale_prices, 1, Spree::Config.enable_sale_prices %>
               <%= Spree.t(:enable_sale_prices) %>
             <% end %>
